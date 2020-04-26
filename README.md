@@ -19,12 +19,12 @@ Você irá precisar criar uma base postgree para executar o backend
 docker run --name banco_postgres -e POSTGRES_PASSWORD=sua senha -p 5432:5432 -d postgres
 
 ```
-# Para instalar as dependências
+### Para instalar as dependências
 $ yarn
 
-# Para executar as migrations
+### Para executar as migrations
 $ yarn sequelize db:migrate
 
-# Para executar a API
+### Para executar a API
 $ yarn dev
 
