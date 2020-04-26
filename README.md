@@ -23,8 +23,8 @@ docker run --name banco_postgres -e POSTGRES_PASSWORD=sua senha -p 5432:5432 -d 
 $ yarn
 
 ### Para executar as migrations
-$ yarn sequelize db:migrate
+$ yarn typeorm migration:run
 
 ### Para executar a API
-$ yarn dev
+$ yarn dev:server
 
