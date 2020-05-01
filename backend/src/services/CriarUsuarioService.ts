@@ -1,5 +1,6 @@
 import Usuario from '../models/Usuario';
 import { getCustomRepository } from 'typeorm';
+import { hash } from 'bcryptjs';
 import UsuarioRepository from '../repositories/UsuarioRepository';
 
 interface RequestDTO {
@@ -24,7 +25,7 @@ class CriarUsuarioService {
 
         const usuarioRepository = getCustomRepository(UsuarioRepository);
 
-
+    
         const isUsuarioEmailExiste = await usuarioRepository.findOne({
             where: { email },
         });
@@ -44,12 +45,15 @@ class CriarUsuarioService {
             throw Error("O Login informa já existe");
         }
 
+        //realiza o hash da senha
+        const senhaHast = await hash(senha,8);
+
         //cria o usuario
         const usuario = usuarioRepository.create({
             nome,
             login,
             email,
-            senha
+            senha: senhaHast
         });
 
         //salva no banco de dados
