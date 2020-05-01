@@ -22,6 +22,9 @@ usuariosRouter.post('/', async (request, response) => {
             senha
         });
 
+        //retira o retorno da senha
+        delete usuario.senha;
+
         return response.json(usuario);
 
     }catch(err){
