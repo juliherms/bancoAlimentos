@@ -1,10 +1,17 @@
 import { getRepository } from 'typeorm';
-import { hash, compare } from 'bcryptjs';
+import { compare } from 'bcryptjs';
+import { sign, verify } from 'jsonwebtoken'
 import Usuario from '../models/Usuario';
+
 
 interface RequestDTO {
     login: string;
     senha: string;
+}
+
+interface ResponseDTO{
+    usuario: Usuario;
+    token: string;
 }
 
 /**
@@ -13,7 +20,7 @@ interface RequestDTO {
 class AutenticacaoUsuarioService {
 
    
-    public async execute({ login, senha }: RequestDTO): Promise<{usuario:Usuario}>{
+    public async execute({ login, senha }: RequestDTO): Promise<ResponseDTO>{
 
         const usuariosRepository = getRepository(Usuario);
         const usuario = await usuariosRepository.findOne({ where: { login } });
@@ -28,8 +35,15 @@ class AutenticacaoUsuarioService {
             throw new Error('Login ou Senha incorreta');
         }
 
+        //gera o token
+        const token = sign({  },'secret',{
+            subject: usuario.id,
+            expiresIn: '1d',
+        });
+
         return {
             usuario,
+            token
         };
     }
 
