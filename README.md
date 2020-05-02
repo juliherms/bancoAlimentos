@@ -14,17 +14,19 @@ API responsável pelo projeto banco de alimentos.
 Você irá precisar criar uma base postgree para executar o backend
 
 ```bash
-
 ### Criando uma imagem do postgreSQL no Docker
 docker run --name banco_postgres -e POSTGRES_PASSWORD=sua senha -p 5432:5432 -d postgres
 
 ```
 ### Para instalar as dependências
+```bash
 $ yarn
-
+```
 ### Para executar as migrations
+```bash
 $ yarn typeorm migration:run
-
+```
 ### Para executar a API
+```bash
 $ yarn dev:server
-
+```

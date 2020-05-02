@@ -11,7 +11,7 @@ interface RequestDTO {
  * Classe responsavel por concentrar a regra de negócios para 
  * criação de uma doacao
  */
-class CriarDoacaoService {
+class CriarDoacaoService { 
 
     /**
      * Metodo responsavel por criar um usuario no sistema verificando regra de negócios
