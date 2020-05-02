@@ -38,6 +38,11 @@ export default class CreateUsuarios1587902356429 implements MigrationInterface {
                         isUnique: true
                       },
                       {
+                        name: 'avatar',
+                        type: 'varchar',
+                        isNullable: true,
+                      },
+                      {
                         name: 'senha',
                         type: 'varchar',
                         isNullable: false,

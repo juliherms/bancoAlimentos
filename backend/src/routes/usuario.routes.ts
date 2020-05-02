@@ -1,10 +1,23 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
+import  garantirAutenticacao  from '../middlewares/garantirAutenticacao';
+import multer from 'multer';
+import uploadConfig from '../config/updload';
 
 import UsuarioRepository from '../repositories/UsuarioRepository';
 import CriarUsuarioService from '../services/CriarUsuarioService';
+import updload from '../config/updload';
 
 const usuariosRouter = Router();
+const upload = multer(uploadConfig);
+
+/**
+ * Metodo responsavel por atualizar o avatar do usuario
+ */
+usuariosRouter.patch('/', garantirAutenticacao, upload.single('avatar'), async(request, response) => {
+
+    return response.json({ ok: true });
+})
 
 //metodo responsavel por criar um usuario no sistma
 usuariosRouter.post('/', async (request, response) => {
