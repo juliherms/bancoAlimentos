@@ -10,17 +10,20 @@ const doacoesRouter = Router();
 
 doacoesRouter.use(garantirAutenticacao);
 
-//metodo responsavel por criar uma doacao no sistma
+/**
+ * Método responsavel por criar uma doacao no sistma 
+ */
 doacoesRouter.post('/', async (request, response) => {
 
     try{
 
-        const {  idUsuario, data, valor } = request.body;
+        const idUsuario = request.usuario.id;
+
+        const { valor } = request.body;
 
         const criarDoacaoService = new CriarDoacaoService();
 
         const doacao = await criarDoacaoService.execute({
-            data,
             idUsuario,
             valor
         });
