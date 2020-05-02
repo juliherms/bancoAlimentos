@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
-import { sign, verify } from 'jsonwebtoken'
+import { sign } from 'jsonwebtoken'
+import authConfig from '../config/auth';
 import Usuario from '../models/Usuario';
 
 
@@ -35,10 +36,12 @@ class AutenticacaoUsuarioService {
             throw new Error('Login ou Senha incorreta');
         }
 
+        const { secret, expiresIn } = authConfig.jwt;
+
         //gera o token
-        const token = sign({  },'secret',{
+        const token = sign({  },secret,{
             subject: usuario.id,
-            expiresIn: '1d',
+            expiresIn: expiresIn,
         });
 
         return {
