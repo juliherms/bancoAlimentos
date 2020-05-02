@@ -4,7 +4,6 @@ import { getCustomRepository } from 'typeorm';
 import DoacaoRepository from '../repositories/DoacaoRepository';
 import CriarDoacaoService from '../services/CriarDoacaoService';
 import garantirAutenticacao from '../middlewares/garantirAutenticacao';
-import Doacao from '../models/Doacao';
 
 const doacoesRouter = Router();
 
