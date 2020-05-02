@@ -8,6 +8,8 @@ import {
     ManyToOne} from 'typeorm'
 import Usuario from './Usuario';
 
+import ColumnNumericTransformer from '../database/transformers/ColumnNumericTransformer';
+
 /**
  * Classe responsável por representar uma doação no sistema.
  */
@@ -24,11 +26,21 @@ class Doacao {
     @JoinColumn({ name: 'usuario_id'})
     usuario: Usuario;
 
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer(),
+      })
+    valor: number;
+
     @Column('time with time zone')
     data: Date;
 
-    @Column()
-    valor: Number;
+    @CreateDateColumn()
+    created_at: Date;
+
+    @CreateDateColumn()
+    updated_at: Date;
 
 }
 

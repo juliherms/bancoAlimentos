@@ -3,8 +3,12 @@ import { getCustomRepository } from 'typeorm';
 
 import DoacaoRepository from '../repositories/DoacaoRepository';
 import CriarDoacaoService from '../services/CriarDoacaoService';
+import garantirAutenticacao from '../middlewares/garantirAutenticacao';
+import Doacao from '../models/Doacao';
 
 const doacoesRouter = Router();
+
+doacoesRouter.use(garantirAutenticacao);
 
 //metodo responsavel por criar uma doacao no sistma
 doacoesRouter.post('/', async (request, response) => {
@@ -28,5 +32,14 @@ doacoesRouter.post('/', async (request, response) => {
     }
 });
 
+/**
+ * Metodo responsavel por listar todas as doacoes no sistema
+ */
+doacoesRouter.get('/', async (request,response) => {
+
+    const doacoesRepository = getCustomRepository(DoacaoRepository)
+    const doacoes = await doacoesRepository.find();
+    return response.json(doacoes);
+});
 
 export default doacoesRouter;
