@@ -3,7 +3,7 @@ import Usuario from '../models/Usuario';
 import uploadConfig from '../config/upload';
 import path from 'path';
 import fs from 'fs';
-import UsuarioRepository from '../repositories/UsuarioRepository';
+import AppError from '../errors/AppError';
 
 interface RequestDTO {
     usuarioId: string;
@@ -23,7 +23,7 @@ class AtualizaUsuarioAvatarService {
         const usuario = await usuariosRepository.findOne(usuarioId);
 
         if(!usuario) {
-            throw new Error('Apenas usuarios logados podem alterar o avatar');
+            throw new AppError('Apenas usuarios logados podem alterar o avatar',401);
         }
 
         if(usuario.avatar){

@@ -3,7 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken'
 import authConfig from '../config/auth';
 import Usuario from '../models/Usuario';
-
+import AppError from '../errors/AppError';
 
 interface RequestDTO {
     login: string;
@@ -27,13 +27,13 @@ class AutenticacaoUsuarioService {
         const usuario = await usuariosRepository.findOne({ where: { login } });
 
         if(!usuario){
-            throw new Error('Login ou Senha incorreta');
+            throw new AppError('Login ou Senha incorreta',401);
         }
 
         const senhaMatched = await compare(senha,usuario.senha);
 
         if(!senhaMatched){
-            throw new Error('Login ou Senha incorreta');
+            throw new AppError('Login ou Senha incorreta',401);
         }
 
         const { secret, expiresIn } = authConfig.jwt;

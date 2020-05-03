@@ -1,6 +1,9 @@
+/**
+ * Classe responsável por tratar exceptions handlers
+ */
 class AppError {
-  public readonly message: string;
 
+  public readonly message: string;
   public readonly statusCode: number;
 
   constructor(messsage: string, statusCode = 400) {

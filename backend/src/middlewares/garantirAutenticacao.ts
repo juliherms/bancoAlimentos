@@ -1,6 +1,7 @@
 import { Request ,Response ,NextFunction } from 'express';
 import authConfig from '../config/auth';
 import { verify } from 'jsonwebtoken';
+import AppError from '../errors/AppError';
 
 interface TokenPayload {
     iat: number;
@@ -22,7 +23,7 @@ export default function garantirAutenticacao(
         const authHeader = request.headers.authorization;
 
         if(!authHeader){
-            throw new Error('JWT Token não informado');
+            throw new AppError('JWT Token não informado',401);
         }
 
         const [,token] = authHeader.split(' ');
@@ -40,6 +41,6 @@ export default function garantirAutenticacao(
             return next(); //segue o fluxo
 
         } catch {
-            throw new Error("JWT Token inválido");
+            throw new AppError("JWT Token inválido",401);
         }
 }

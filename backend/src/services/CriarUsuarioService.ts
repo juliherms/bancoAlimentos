@@ -2,6 +2,7 @@ import Usuario from '../models/Usuario';
 import { getCustomRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 import UsuarioRepository from '../repositories/UsuarioRepository';
+import AppError from '../errors/AppError';
 
 interface RequestDTO {
     nome: string;
@@ -32,7 +33,7 @@ class CriarUsuarioService {
 
         //Verifica se o login ja existe
         if(isUsuarioEmailExiste){
-            throw Error("O Email informado já existe");
+            throw new AppError("O Email informado já existe");
         }
 
         const isUsuarioLoginExiste = await usuarioRepository.findOne({
@@ -42,7 +43,7 @@ class CriarUsuarioService {
         //Verifica se o login ja existe
         if(isUsuarioLoginExiste){
 
-            throw Error("O Login informa já existe");
+            throw new AppError("O Login informa já existe");
         }
 
         //realiza o hash da senha
