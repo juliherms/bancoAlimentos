@@ -17,48 +17,37 @@ const upload = multer(uploadConfig);
  */
 usuariosRouter.patch('/avatar', garantirAutenticacao, upload.single('avatar'), async(request, response) => {
 
-    try{
-        const atualizaUsuarioAvatar = new AtualizaUsuarioAvatarService();
+    const atualizaUsuarioAvatar = new AtualizaUsuarioAvatarService();
 
-        const usuario = await atualizaUsuarioAvatar.execute({
-            usuarioId: request.usuario.id,
-            avatarFilename: request.file.filename,
-        });
+    const usuario = await atualizaUsuarioAvatar.execute({
+        usuarioId: request.usuario.id,
+        avatarFilename: request.file.filename,
+    });
 
-        delete usuario.senha;
+    delete usuario.senha;
 
-        return response.json(usuario);
+    return response.json(usuario);
 
-    } catch(err){
-        return response.json({ ok: true });
-    }
-    
 });
 
 //metodo responsavel por criar um usuario no sistma
 usuariosRouter.post('/', async (request, response) => {
 
-    try{
+    const {  nome, login, email, senha } = request.body;
 
-        const {  nome, login, email, senha } = request.body;
+    const criarUsuarioService = new CriarUsuarioService();
 
-        const criarUsuarioService = new CriarUsuarioService();
+    const usuario = await criarUsuarioService.execute({
+        nome,
+        login,
+        email,
+        senha
+    });
 
-        const usuario = await criarUsuarioService.execute({
-            nome,
-            login,
-            email,
-            senha
-        });
+    //retira o retorno da senha
+    delete usuario.senha;
 
-        //retira o retorno da senha
-        delete usuario.senha;
-
-        return response.json(usuario);
-
-    }catch(err){
-        return response.status(err.statusCode).json({ error: err.message });
-    }
+    return response.json(usuario);
 });
 
 //método responsável por listar todas as doações realizadas

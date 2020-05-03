@@ -14,24 +14,19 @@ doacoesRouter.use(garantirAutenticacao);
  */
 doacoesRouter.post('/', async (request, response) => {
 
-    try{
+    const idUsuario = request.usuario.id;
 
-        const idUsuario = request.usuario.id;
+    const { valor } = request.body;
 
-        const { valor } = request.body;
+    const criarDoacaoService = new CriarDoacaoService();
 
-        const criarDoacaoService = new CriarDoacaoService();
+    const doacao = await criarDoacaoService.execute({
+        idUsuario,
+        valor
+    });
 
-        const doacao = await criarDoacaoService.execute({
-            idUsuario,
-            valor
-        });
-
-        return response.json(doacao);
-
-    }catch(err){
-        return response.status(err.statusCode).json({ error: err.message });
-    }
+    return response.json(doacao);
+   
 });
 
 /**
