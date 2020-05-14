@@ -60,7 +60,7 @@ export default class CreateUsuarios1587902356429 implements MigrationInterface {
                 ]
             })
         );
-    }
+    } 
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('TB_USUARIO');

@@ -65,4 +65,5 @@ export class CreateDoacoes1588422896519 implements MigrationInterface {
         await queryRunner.dropTable('TB_DOACAO');
     }
 
+    
 }

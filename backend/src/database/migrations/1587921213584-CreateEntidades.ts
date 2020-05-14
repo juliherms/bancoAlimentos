@@ -58,5 +58,6 @@ export class CreateEntidades1587921213584 implements MigrationInterface {
 
         await queryRunner.dropTable('TB_ENTIDADE');
     }
+    
 
 }
