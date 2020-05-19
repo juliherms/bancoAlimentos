@@ -2,39 +2,90 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
-    height: 100vh;
-    display:flex;
-    align-items: stretch;
+    margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
 `;
 
 export const Content = styled.div`
     
-    display: flex;
-    flex-direction: column;
-    place-content: center;
-    background-color: #FFF;
-    place-content: center;
+    width: 320px;
+	height: 420px;
+	background: #000;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
 
-    width: 100%;
-    max-width: 700px;
+    h1 {
+	    margin: 0;
+	    padding: 0 0 20px;
+	    text-align: center;
+	    font-size: 22px;
+    }
 
-    form {
-        margin: 80px 0;
-        width: 340px;
-        text-align: center;
+    img {
+	    width:100px;
+	    height:100px;
+	    border-radius: 50%;
+	    position:absolute;
+	    top: -50px;
+	    left: calc(50% - 50px);
+    }	
 
-        h1 {
-            margin-bottom: 24px;
+    input {
+	    width: 100%;
+	    margin-bottom: 20px;
+    }
 
-        }
+    p {
+	    margin: 0;
+	    padding: 0;
+	    font-weight: bold;
+    }
 
-        input {
-            background-color: #FFF;
-            border-radius: 10px;
-            border: 2px solid #ff6961;
-            padding: 16px;
-            width: 100%;
+    input {
+	
+        border: none;
+        border-bottom: 1px solid #fff;
+        background:transparent;
+        outline: none;
+        height:40px;
+        color:#fff;
+        font-size: 16px;
+
+    }
+
+    button {
+        width: 100%;
+	    margin-bottom: 20px;
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 20px;
+
+        &:hover{
+		    background: #ffc107;
+	        color: #000;
         }
     }
 
+    a {
+	    text-decoration: none;
+	    font-size: 12px;
+	    line-height: 20px;
+	    color: darkgrey;
+
+        &:hover {
+	        color: #ffc107;
+        }
+    }
 `;
