@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { Container, Content } from './styles';
 import logoImg from '../../assets/avatar.png';
 import Input from '../../components/input';
 import Button from '../../components/button';
+import * as Yup from 'yup';
 
 
 /**
@@ -14,9 +15,22 @@ import Button from '../../components/button';
 const Associe: React.FC = () => {
 
     //salva os dados do formulario
-    function handleSubmit(data: object): void {
-        console.log(data);
-    }
+   const handleSubmit = useCallback( async (data: object) => {
+
+        try {
+            //modelo de validação da entrada de datos
+            const schema = Yup.object().shape({
+                nome: Yup.string().required('Nome é obrigatório'), 
+                email: Yup.string().required('E-mail é obrigatório').email('Email informado é inválido'),
+                senha: Yup.string().required('Senha é obrigatória') .min(6,'A senha deve conter no mímimo 6 dígitos'),
+            });
+
+            await schema.validate(data);
+
+        } catch(err){
+            console.log(err);
+        }
+    },[]);
 
     return (
     <>
