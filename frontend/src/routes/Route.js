@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
+//importa os layouts
+import AuthLayout from '../pages/_layouts/auth';
+import DefaultLayout from '../pages/_layouts/default';
+
 //Rota customizada
 export default function RouteWrapper({
     component: Component,
@@ -21,7 +25,18 @@ export default function RouteWrapper({
         return <Redirect to="/dashboard"/>
     }
 
-    return <Route {...rest} component={Component} />;
+    //verifica qual layout será apresentado.
+    const Layout = signed ? DefaultLayout : AuthLayout;
+
+    //monta o layout com o componente renderizado dentro.
+    return (
+     <Route {...rest} render={props => (
+        <Layout>
+            <Component {...props} />
+        </Layout>
+        )}
+      />
+    );
 }
 
 RouteWrapper.propTypes = {
