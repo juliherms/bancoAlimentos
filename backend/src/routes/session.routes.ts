@@ -8,11 +8,11 @@ const sessionsRouter = Router();
  */
 sessionsRouter.post('/', async (request, response) => {
 
-    const { login, senha } = request.body;
+    const { email, senha } = request.body;
     const autenticacaoUsuario = new AutenticacaoUsuarioService();
 
     const { usuario, token } = await autenticacaoUsuario.execute({
-        login,
+        email,
         senha,
     });
 

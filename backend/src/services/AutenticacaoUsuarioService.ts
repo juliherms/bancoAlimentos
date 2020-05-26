@@ -6,7 +6,7 @@ import Usuario from '../models/Usuario';
 import AppError from '../errors/AppError';
 
 interface RequestDTO {
-    login: string;
+    email: string;
     senha: string;
 }
 
@@ -21,10 +21,10 @@ interface ResponseDTO{
 class AutenticacaoUsuarioService {
 
    
-    public async execute({ login, senha }: RequestDTO): Promise<ResponseDTO>{
+    public async execute({ email, senha }: RequestDTO): Promise<ResponseDTO>{
 
         const usuariosRepository = getRepository(Usuario);
-        const usuario = await usuariosRepository.findOne({ where: { login } });
+        const usuario = await usuariosRepository.findOne({ where: { email } });
 
         if(!usuario){
             throw new AppError('Login ou Senha incorreta',401);

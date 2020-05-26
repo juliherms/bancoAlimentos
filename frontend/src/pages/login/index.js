@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import { signInRequest } from '../../store/modules/auth/actions';
 
 //Representa uma página de login no sistema
 export default function Login() {
 
+    const dispatch = useDispatch();
 
     const schema = Yup.object().shape({
         
@@ -15,8 +18,9 @@ export default function Login() {
     });
 
     //captura os dados informados no formulário
-    function handleSubmit(data) {
-        console.log(data);
+    function handleSubmit({email,senha}) {
+        //chama o dispach via redux
+        dispatch(signInRequest(email,senha));
     }
 
     return (
