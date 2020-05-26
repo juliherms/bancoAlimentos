@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -9,6 +9,8 @@ import { signInRequest } from '../../store/modules/auth/actions';
 export default function Login() {
 
     const dispatch = useDispatch();
+    //captura o loading do reducer
+    const loading = useSelector(state => state.auth.loading);
 
     const schema = Yup.object().shape({
         
@@ -30,7 +32,7 @@ export default function Login() {
                 <Input name="email" type="email" placeholder="Seu e-mail"/>
                 <Input name="senha" type="password" placeholder="Sua senha"/>
 
-                <button type="submit">Entrar</button>
+                <button type="submit">{loading ? 'Carregando...' : 'Entrar'}</button>
                 <Link to="/register">Ajudar</Link>
             </Form>      
         </>

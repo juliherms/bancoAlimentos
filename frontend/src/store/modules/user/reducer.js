@@ -7,7 +7,9 @@ const INITIAL_STATE = {
 //executa o processo de login
 export default function user(state = INITIAL_STATE, action) {
 
+    //eventos que estou escutando
     switch (action.type) {
+        
         case '@auth/SIGN_IN_SUCCESS':
             return produce(state, draft => {
                 draft.profile = action.payload.user;
