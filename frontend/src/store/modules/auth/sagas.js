@@ -27,6 +27,9 @@ export function* signIn({ payload }){
             return;
         }*/
 
+        //adiciona o token ao header
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+
         //armazena o token e o usuario.
         yield put(signInSuccess(token,usuario));
 
@@ -62,7 +65,22 @@ export function* signUp({ payload }){
     }
 }
 
+//funcao responsavel por atualizar o token de autenticacao
+export function setToken({ payload }){
+
+    if(!payload) return;
+
+    const  { token } = payload.auth;
+
+    if(token){
+        //adiciona o token ao header
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+    }
+}
+
+//escuta os eventos
 export default all([
+    takeLatest('persist/REHYDRATE',setToken), //atualiza o token a cada requisicao
     takeLatest('@auth/SIGN_IN_REQUEST',signIn),
     takeLatest('@auth/SIGN_UP_REQUEST',signUp),
 ]);
