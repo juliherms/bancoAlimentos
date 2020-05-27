@@ -1,10 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 //Representa uma página de cadastro de usuario no sistema
 export default function Cadastro() {
+
+    const dispatch = useDispatch();
 
     const schema = Yup.object().shape({
         
@@ -15,8 +19,9 @@ export default function Cadastro() {
     });
 
     //captura os dados informados no formulário
-    function handleSubmit(data) {
-        console.log(data);
+    function handleSubmit({nome, email, senha }) {
+        
+        dispatch(signUpRequest(nome,nome, email, senha));
     }
 
     return (

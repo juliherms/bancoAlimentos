@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+
 import { darken } from 'polished';
 
 //monta o layout da tela de login
 export const Wrapper = styled.div`
 
     height: 100%;
-    background:linear-gradient(-90deg,#FFFFFF,#ab59c1);
+    background:linear-gradient(-10deg,#FFFFFF,#c10015);
     display: flex;
     justify-content: center;
     align-items:center;

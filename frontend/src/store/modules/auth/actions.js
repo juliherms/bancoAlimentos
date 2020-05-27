@@ -10,6 +10,17 @@ export function signInRequest(email,password) {
 }
 
 /**
+ * realiza o cadastro de usuario na base de dados.
+ */
+export function signUpRequest(name,login,email,password){
+
+    return {
+        type: '@auth/SIGN_UP_REQUEST',
+        payload: {name, login, email, password},
+    };
+}
+
+/**
  * regista o sucesso de autenticacao e armazena o token e o usuario
  */
 export function signInSuccess(token, user){
