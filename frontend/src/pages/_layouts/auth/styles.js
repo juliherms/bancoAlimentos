@@ -5,16 +5,20 @@ import { darken } from 'polished';
 //monta o layout da tela de login
 export const Wrapper = styled.div`
 
+    background: #e4605e;
     height: 100%;
-    background:linear-gradient(-10deg,#FFFFFF,#c10015);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 `;
 
 export const Content = styled.div`
 
     width: 100%;
+    max-width: 360px;
+    padding: 60px 30px;
+    background: #fff;
     max-width:315px;
     text-align:center;
 
@@ -62,7 +66,7 @@ export const Content = styled.div`
     }
 
     a {
-        color: #fff;
+        color: #e4605e;
         margin-top: 15px;
         font-size: 16px;
         opacity: 0.8;
