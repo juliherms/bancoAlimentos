@@ -16,13 +16,15 @@ notificacoesRouter.get('/', async (request,response) => {
             read: true,
             _id: 1,
             content: "A Casa da vovó agradece a sua doação",
-            user: "1"
+            user: "1",
+            createdAt: '2020-06-01T14:19:22.923Z'
         },
         {
             read: false,
-            _id: 1,
-            content: "A Casa da vovó agradece a sua doação",
-            user: "1"   
+            _id: 2,
+            content: "O Sesc lançou uma nova campanha para o dia de São João",
+            user: "1",
+            createdAt: '2020-05-30T14:19:22.923Z'   
         }
 
     ];    
