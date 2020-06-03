@@ -8,8 +8,19 @@ export default function Notifications() {
 
     //cria um estado para controlar a leitura da notificacao
     const [visible, setVisible] = useState(false);
+    //cria um estado de notificacoes
+    const [notifications, setNotifications] = useState([]);
 
-    //funcao responsabel por controlar a exibicao das notificacoes
+    //funcao responsavel por carregar as notificacoes
+    useEffect(() => {
+        async function loadNotifications() {
+            const response = await api.get('notifications');
+            setNotifications(response.data);
+
+        }
+    })
+
+    //funcao responsavel por controlar a exibicao das notificacoes
     function handleToggleVisible() {
         setVisible(!visible);
     }

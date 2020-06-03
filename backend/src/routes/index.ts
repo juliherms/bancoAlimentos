@@ -2,6 +2,7 @@ import { Router } from 'express';
 import usuariosRouter from './usuario.routes';
 import sessionsRouter from './session.routes';
 import doacoesRouter from './doacao.routes';
+import notificacoesRouter from './notificacoes.routes';
 
 //representa a classe responsável pelas rotas no sistema.
 const routes = Router();
@@ -12,5 +13,7 @@ routes.use('/sessions',sessionsRouter);
 routes.use('/usuarios',usuariosRouter);
 //concentra todos os endpoints de doacoes
 routes.use('/doacoes',doacoesRouter);
+//concentra todos os endpoints de notificacoes
+routes.use('/notificacoes',notificacoesRouter);
 
 export default routes;
