@@ -7,6 +7,8 @@ import {
         JoinColumn,
         ManyToOne} from 'typeorm'
 import Usuario from './Usuario';
+import ColumnNumericTransformer from '../database/transformers/ColumnNumericTransformer';
+
 
 /**
  * Classe responsável por representar uma entidade no sistema.
@@ -21,6 +23,29 @@ class Entidade {
     @Column()
     nome: string;
 
+    @Column('numeric', {
+        precision: 2,
+        scale: 10,
+        transformer: new ColumnNumericTransformer(),
+      })
+    latitude: number;
+
+    @Column('numeric', {
+        precision: 2,
+        scale: 10,
+        transformer: new ColumnNumericTransformer(),
+      })
+    longitude: number;
+
+    @Column()
+    cidade: string;
+
+    @Column()
+    email: string;
+
+    @Column()
+    uf: string;
+    
     @Column()
     descricao:string;
 

@@ -1,7 +1,10 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class CreateEntidades1587921213584 implements MigrationInterface {
 
+    /**
+     * Funcao responsável por criar as tabelas no banco
+     */
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         await queryRunner.createTable(
@@ -19,6 +22,33 @@ export class CreateEntidades1587921213584 implements MigrationInterface {
                           name: 'nome',
                           type: 'varchar',
                           isNullable: false,
+                      },
+                      {
+                        name: 'latitude',
+                        type: 'decimal',
+                        precision: 10,
+                        scale: 2,
+                      },
+                      {
+                        name: 'longitude',
+                        type: 'decimal',
+                        precision: 10,
+                        scale: 2,
+                      },
+                      {
+                        name: 'cidade',
+                        type: 'varchar',
+                        isNullable: false
+                      },
+                      {
+                        name: 'email',
+                        type: 'varchar',
+                        isNullable: false
+                      },
+                      {
+                        name: 'uf',
+                        type: 'varchar',
+                        isNullable: false
                       },
                       {
                         name: 'descricao',
@@ -54,6 +84,9 @@ export class CreateEntidades1587921213584 implements MigrationInterface {
 
     }
 
+    /**
+     * Funcao responsável por deletar os dados do banco
+     */
     public async down(queryRunner: QueryRunner): Promise<void> {
 
         await queryRunner.dropTable('TB_ENTIDADE');
