@@ -1,5 +1,5 @@
 
-API responsável pelo projeto banco de alimentos.
+Aplicação construída com react e node com o objetivo de cadastrar instituições de banco de alimentos.
 
 
 ### Requisitos
@@ -30,3 +30,11 @@ $ yarn typeorm migration:run
 ```bash
 $ yarn dev:server
 ```
+
+### Para executar o frontend
+```bash
+$ yarn start
+```
+<img src="img/principal.png">
+
+

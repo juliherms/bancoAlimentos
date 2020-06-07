@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
     }
     a {
         color: #e4605e;
-        margin-top: 15px;
+        margin-top: 5px;
         font-size: 16px;
         opacity: 0.8;
     }
@@ -55,7 +55,7 @@ export const Wrapper = styled.div`
     }
 
     header {
-        padding-top: 48px;
+        padding-top: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -86,7 +86,7 @@ export const Wrapper = styled.div`
 
         h1 {
             margin-top:5px;
-            font-size: 36px;
+            font-size: 22px;
         }
 
         fieldset {
