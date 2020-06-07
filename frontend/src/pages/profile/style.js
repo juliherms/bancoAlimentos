@@ -6,6 +6,9 @@ import { darken } from 'polished';
 export const Container = styled.div`
   max-width: 600px;
   margin: 50px auto;
+  padding: 30px 30px;
+  background: #fff;
+  
   
   form {
     display: flex;
@@ -13,12 +16,13 @@ export const Container = styled.div`
     margin-top: 30px;
 
     input {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(59,158,255, 0.1); 
       border: 0;
       border-radius: 4px;
       height: 44px;
       padding: 0 15px;
-      color: #fff;
+      color: #e4605e;
+      font-weight:bold;
       margin: 0 0 10px;
       &::placeholder {
         color: rgba(255, 255, 255, 0.7);

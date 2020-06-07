@@ -16,7 +16,9 @@ export default function Header() {
             <Content>
                 <nav>
                     <img src="" alt="logo"/>
-                    <Link to="/dashboard" >DASHBOARD</Link>
+                    <Link to="/dashboard" >Minhas Doações</Link>
+                    |
+                    <Link to="/dashboard" >Instituições</Link>
                 </nav>
 
                 <aside>

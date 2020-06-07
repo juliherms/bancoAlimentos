@@ -11,6 +11,7 @@ export const Content = styled.div`
     max-width: 900px;
     margin: 0 auto;
     display: flex;
+    border-bottom: 1px solid #dddddd;
     justify-content: space-between;
     align-items: center;
 
@@ -24,8 +25,11 @@ export const Content = styled.div`
             border-right: 1px solid #eee;
         }
 
+
         a {
             font-weight:bold;
+            margin: 5px;
+            color: #e4605e;
         }
     }
 
