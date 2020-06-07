@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { signInRequest } from '../../store/modules/auth/actions';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logologin.png';
 
 //Representa uma página de login no sistema
 export default function Login() {
@@ -28,8 +28,9 @@ export default function Login() {
 
     return (
         <>
-            <img src="" alt="Banco de Alimentos"/>
+            <img src={logo} alt="Banco de Alimentos"/>
             <Form schema={schema} onSubmit={handleSubmit}>
+                
                 <Input name="email" type="email" placeholder="Seu e-mail"/>
                 <Input name="senha" type="password" placeholder="Sua senha"/>
 

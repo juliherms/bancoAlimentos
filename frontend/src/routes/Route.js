@@ -5,6 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 //importa os layouts
 import AuthLayout from '../pages/_layouts/auth';
 import DefaultLayout from '../pages/_layouts/default';
+import HomeLayout from '../pages/_layouts/home';
 
 import { store } from '../store';
 
@@ -12,6 +13,7 @@ import { store } from '../store';
 export default function RouteWrapper({
     component: Component,
     isPrivate,
+    path,
     ...rest
 }){
     //verifica se o usuario esta logado ou não
@@ -27,8 +29,15 @@ export default function RouteWrapper({
         return <Redirect to="/dashboard"/>
     }
 
+    console.log(path);
+
     //verifica qual layout será apresentado.
-    const Layout = signed ? DefaultLayout : AuthLayout;
+    let Layout = signed ? DefaultLayout : AuthLayout;
+
+
+    if(path === '/' || path === '/entidade'){
+        Layout = HomeLayout;
+    }
 
     //monta o layout com o componente renderizado dentro.
     return (

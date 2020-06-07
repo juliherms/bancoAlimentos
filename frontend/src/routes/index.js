@@ -5,6 +5,8 @@ import Login from '../pages/login';
 import Cadastro from '../pages/cadastro';
 import Dashboard from '../pages/dashboard';
 import Perfil from '../pages/profile';
+import Home from '../pages/home';
+import Entidade from '../pages/entidades';
 
 /**
  * Pagina responsavel pela configuracao de rotas
@@ -13,7 +15,9 @@ import Perfil from '../pages/profile';
  export default function Routes() {
      return (
          <Switch>
-             <Route path="/" exact component={Login} />
+             <Route path="/" exact component={Home} />
+             <Route path="/entidade" exact component={Entidade} />
+             <Route path="/login" exact component={Login} />
              <Route path="/register"  component={Cadastro} />
              <Route path="/dashboard"  component={Dashboard} isPrivate />
              <Route path="/profile"  component={Perfil} isPrivate />
