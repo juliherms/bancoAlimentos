@@ -7,16 +7,26 @@ const INITIAL_STATE = {
 //executa o processo de login
 export default function user(state = INITIAL_STATE, action) {
 
-    console.log(action.type);
     //eventos que estou escutando
-    switch (action.type) {
+    return produce(state, draft => {
+
+        //eventos que estou escutando
+        switch (action.type) {
         
-        case '@auth/SIGN_IN_SUCCESS':
-            return produce(state, draft => {
-                draft.profile = action.payload.user;
-            });
+            case '@auth/SIGN_IN_SUCCESS':
+                return produce(state, draft => {
+                    draft.profile = action.payload.user;
+                });
+        
+            case '@user/UPDATE_PROFILE_SUCCESS': {
+                //TODO - juliherms verificar
+                draft.profile = action.payload.profile;
+                break;
+            }
             
-        default:
-            return state;
-    }
+            default:
+                return state;
+        }
+
+    });
 }

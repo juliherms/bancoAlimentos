@@ -12,6 +12,7 @@ export function* updateProfile({ payload }){
 
     try{
 
+        //TODO julherms - revisar o id_avatar.
         const { nome, email, ...rest } = payload.data;
 
 
