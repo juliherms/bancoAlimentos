@@ -5,5 +5,5 @@ import user from './user/sagas';
 
 //registro o meu saga
 export default function* rootSaga(){
-    return yield all([auth],[user]);
+    return yield all([auth, user]);
 }

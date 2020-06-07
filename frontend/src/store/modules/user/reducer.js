@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 //executa o processo de login
 export default function user(state = INITIAL_STATE, action) {
 
+    console.log(action.type);
     //eventos que estou escutando
     switch (action.type) {
         

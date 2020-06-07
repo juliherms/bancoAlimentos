@@ -50,7 +50,7 @@ usuariosRouter.post('/', async (request, response) => {
     return response.json(usuario);
 });
 
-//método responsável por listar todas as doações realizadas
+//método responsável por listar todos os usuarios
 usuariosRouter.get('/', async (request, response) => {
 
     const usuarioRepository = getCustomRepository(UsuarioRepository);
@@ -59,6 +59,15 @@ usuariosRouter.get('/', async (request, response) => {
 
     return response.json(usuarios);
 });
+
+//método responsável por atualizar um usuario
+usuariosRouter.put('/', async(request, response) => {
+
+    const {  nome  } = request.body;
+
+    response.json("teste");
+
+})
 
 
 export default usuariosRouter;

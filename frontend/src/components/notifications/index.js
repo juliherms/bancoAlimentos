@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance  } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -12,6 +12,13 @@ export default function Notifications() {
     const [visible, setVisible] = useState(false);
     //cria um estado de notificacoes
     const [notifications, setNotifications] = useState([]);
+
+    //verifica se tem alguma notificacao não lida e atualiza o array
+    //essa variavel controla a existência de notificacoes nao lidas na badge
+    const hasUnread = useMemo(
+        () => !!notifications.find(notification => notification.read === false),
+        [notifications]
+    )
 
     //funcao responsavel por carregar as notificacoes
     useEffect(() => {
@@ -38,10 +45,26 @@ export default function Notifications() {
     function handleToggleVisible() {
         setVisible(!visible);
     }
+
+    //funcao responsavel por atualizar as notificacoes
+    //como lida
+    async function handleMarkAsRead(id){
+
+        //TODO - juliherms verificar
+        //await api.put(`notifications/${id}`);
+
+        //percorre a lista de notificacoes e marca como lida a do id informado.
+        setNotifications(
+            notifications.map(notification => 
+                notification._id === id ? { ...notification, read:true } : notification
+            )
+        );
+
+    }
     
     return (
         <Container>
-            <Badge onClick={handleToggleVisible}  hasUnread >
+            <Badge onClick={handleToggleVisible}  hasUnread={hasUnread} >
                 <MdNotifications color="#7159c1" size={20}/>
             </Badge>
 
@@ -53,7 +76,10 @@ export default function Notifications() {
                             <Notification key={notification._id} unread={!notification.read}>
                                 <p>{notification.content}</p>
                                 <time>{notification.timeDistance}</time>
-                                <button type="button">Marcar como lida</button>
+                                {!notification.read && (
+                                   <button onClick={() => handleMarkAsRead(notification._id)} type="button">Marcar como lida</button>     
+                                )}
+                                
                             </Notification>
                             
                         ))
