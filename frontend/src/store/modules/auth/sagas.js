@@ -78,9 +78,15 @@ export function setToken({ payload }){
     }
 }
 
+//funcao responsavel por redirecionar para a pagina principal após o comando loggout
+export function signOut(){
+    history.push('/');
+}
+
 //escuta os eventos
 export default all([
     takeLatest('persist/REHYDRATE',setToken), //atualiza o token a cada requisicao
     takeLatest('@auth/SIGN_IN_REQUEST',signIn),
     takeLatest('@auth/SIGN_UP_REQUEST',signUp),
+    takeLatest('@auth/SIGN_OUT',signOut),
 ]);

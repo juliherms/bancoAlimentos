@@ -38,3 +38,12 @@ export function signFailure(){
         type: '@auth/SIGN_FAILURE',
     };
 }
+
+/**
+ * Realiza o logout da aplicacao 
+ */
+export function signOut(){
+    return {
+        type: '@auth/SIGN_OUT',
+    };
+}

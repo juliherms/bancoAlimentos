@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { updateProfileRequest } from '../../store/modules/user/actions';
+import { signOut } from '../../store/modules/auth/actions';
 import AvatarInput from './AvatarInput';
 import { Container } from './style';
 
@@ -13,8 +14,12 @@ export default function Profile() {
 
     //salva os dados alterados
     function handleSubmit(data) {
-
         dispatch(updateProfileRequest(data));
+    }
+
+    //emite o evento de logoff
+    function handleSignOut(){
+        dispatch(signOut());
     }
 
     return (
@@ -33,7 +38,7 @@ export default function Profile() {
 
                 <button type="submit">Atualizar</button>
             </Form>
-                <button type="button">Sair da aplicação</button>
+                <button type="button" onClick={handleSignOut}>Sair da aplicação</button>
         </Container>
         </>
     );
