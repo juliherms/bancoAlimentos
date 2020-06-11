@@ -2,22 +2,41 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 
+export const Field = styled.div`
+
+    flex: 1;  
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+
+    label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+`;
+
+
+export const FieldGroup = styled.div`
+
+    
+    flex: 1;
+    display: flex;
+    
+`;
+
 export const Wrapper = styled.div`
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
 
     input {
-        background: rgba(0,0,0,0.1);
-        border:0;
-        border-radius: 4px;
-        height: 44px;
-        padding: 0 15px;
-        color: #fff;
-        margin: 0 0 10px;
-        &::placeholder {
-            color: rgba(255,255,255,0.7);
-        }
+        flex: 1;
+        background: #f0f0f5;
+        border-radius: 8px;
+        border: 0;
+        padding: 16px 24px;
+        font-size: 16px;
+        color: #6c6c80;
     }
 
     label {
@@ -85,7 +104,7 @@ export const Wrapper = styled.div`
         flex-direction: column;
 
         h1 {
-            margin-top:5px;
+            margin-top:1px;
             font-size: 22px;
         }
 

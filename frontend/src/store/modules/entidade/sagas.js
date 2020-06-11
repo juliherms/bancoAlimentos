@@ -11,7 +11,7 @@ export function* saveEntity({ payload }){
 
     try{
 
-        
+        console.log(payload.data);
 
         const { nome, email, senha, cidade, uf, acao } = payload.data;
 

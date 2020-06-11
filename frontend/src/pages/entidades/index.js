@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper } from './styles';
+import { Wrapper,Field,FieldGroup } from './styles';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
@@ -25,6 +25,7 @@ export default function Entidade() {
     //captura os dados informados no formulário
     function handleSubmit(data) {
         
+        console.log('chamou');
         //chama o dispach via redux
        dispatch(saveEntityRequest(data));
     }
@@ -33,7 +34,7 @@ export default function Entidade() {
         <>
             <Wrapper>
                 <header>
-                    <img src="" alt="Logo Ecoleta" />
+                    <img src="" alt="Logo Alimentos" />
                     <Link to="/">
                         <FiArrowLeft />
                         Voltar para Home
@@ -42,26 +43,25 @@ export default function Entidade() {
                 <Form schema={schema}  onSubmit={handleSubmit}>
                     <h1>Cadastro de entidade</h1>
 
-                    <label htmlFor="nome">Nome</label>
-                    <Input name="nome" placeholder="nome"/>
-
-                    <label htmlFor="email">Email</label>
-                    <Input name="email" type="email" placeholder="email"/>
-
-                    <label htmlFor="senha">Senha</label>
-                    <Input name="senha" type="password" placeholder="senha"/>
-
-                    <label htmlFor="cidade">Cidade</label>
-                    <Input name="cidade" placeholder="cidade"/>
-
-                    <label htmlFor="uf">UF</label>
-                    <Input name="uf" placeholder="uf"/>
-
-                    <label htmlFor="acao">Ação Social</label>
-                    <Input name="acao" placeholder="Ação Social"/>
-                    
+                        <Field>
+                            <Input name="nome" placeholder="nome"/>
+                        </Field>
+                        <Field>
+                            <Input name="email" type="email" placeholder="email"/>
+                        </Field>
+                    <Field>
+                        <Input name="senha" type="password" placeholder="senha"/>
+                    </Field>
+                    <Field>
+                        <Input name="cidade" placeholder="cidade"/>
+                    </Field>
+                    <Field>
+                        <Input name="uf" placeholder="uf"/>
+                    </Field>
+                    <Field>
+                        <Input name="acao" placeholder="Ação Social"/>
+                    </Field>
                     <button type="submit">Cadastrar</button>
-
                 </Form>
             </Wrapper>
         </>

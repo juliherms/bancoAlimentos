@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  Notifications from '../notifications';
 import { Container, Content, Profile } from './styles';
+import logo from '../../assets/donate7.png';
 
 export default function Header() {
 
@@ -15,7 +16,7 @@ export default function Header() {
         <Container>
             <Content>
                 <nav>
-                    <img src="" alt="logo"/>
+                    <img src={logo} alt="logo"/>
                     <Link to="/dashboard" >MINHAS DOAÇÕES</Link>
                     <Link to="/dashboard" >INSTITUIÇÕES</Link>
                 </nav>

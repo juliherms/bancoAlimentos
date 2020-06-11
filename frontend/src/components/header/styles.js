@@ -22,6 +22,8 @@ export const Content = styled.div`
         img {
             margin-right: 20px;
             padding-right: 20px;
+            height:60px;
+            width:80px;
             border-right: 1px solid #eee;
         }
 

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 import CriarEntidadeService from '../services/CriarEntidadeService';
+import EntidadeRepository from '../repositories/EntidadeRepository';
 
 const entidadesRouter = Router();
 
@@ -25,6 +26,17 @@ entidadesRouter.post('/', async (request, response) => {
 
     return response.json(entidade);
 });
+
+//método responsável por listar todos as entidades cadastradas
+entidadesRouter.get('/', async (request, response) => {
+
+    const entidadeRepository = getCustomRepository(EntidadeRepository);
+
+    const entidades = await entidadeRepository.find();
+
+    return response.json(entidades);
+});
+
 
 export default entidadesRouter;
 
