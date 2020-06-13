@@ -42,13 +42,12 @@ export default function Entidade() {
                 </header>
                 <Form schema={schema}  onSubmit={handleSubmit}>
                     <h1>Cadastro de entidade</h1>
-
-                        <Field>
-                            <Input name="nome" placeholder="nome"/>
-                        </Field>
-                        <Field>
-                            <Input name="email" type="email" placeholder="email"/>
-                        </Field>
+                    <Field>
+                        <Input name="nome" placeholder="nome"/>
+                    </Field>
+                    <Field>
+                        <Input name="email" type="email" placeholder="email"/>
+                    </Field>
                     <Field>
                         <Input name="senha" type="password" placeholder="senha"/>
                     </Field>

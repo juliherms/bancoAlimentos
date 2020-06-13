@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { signUpRequest } from '../../store/modules/auth/actions';
+import logo from '../../assets/logologin.png';
 
 //Representa uma página de cadastro de usuario no sistema
 export default function Cadastro() {
@@ -26,7 +27,7 @@ export default function Cadastro() {
 
     return (
         <>
-            <img src="" alt="Banco de Alimentos"/>
+            <img src={logo} alt="Banco de Alimentos"/>
             <Form schema={schema} onSubmit={handleSubmit}>
 
                 <Input name="nome" placeholder="Nome"/>

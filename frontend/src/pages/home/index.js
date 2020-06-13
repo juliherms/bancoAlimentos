@@ -10,7 +10,12 @@ export default function Home() {
         <>
             <Wrapper>
             <Content>
-                Login
+            <Link to="/login">
+                <span>
+                    <FiLogIn />
+                </span>
+                <strong>Doar</strong>
+            </Link>
                 <header>
                     <img src={logo} alt="Logo Ecoleta" />
                 </header>
